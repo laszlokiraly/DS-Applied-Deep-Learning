@@ -1,4 +1,4 @@
-# Applied Deep Learning: Exercise 1 - Initiate'
+# Applied Deep Learning: Exercise 1 - Initiate
 
 
 Author: **"Laszlo Kiraly, 09227679"**  
@@ -10,6 +10,7 @@ Date: **"10/30/2019"**
 The paper [Classification of Architectural Heritage Images Using Deep Learning Techniques](https://www.researchgate.net/publication/320052364_Classification_of_Architectural_Heritage_Images_Using_Deep_Learning_Techniques) brings its own [dataset](https://old.datahub.io/dataset/architectural-heritage-elements-image-dataset) to classify different types of architectural monuments, e.g. gargoyles, inner and outer domes, altars, etc.
 
 The scores for full retrain of a resnet model are:
+
 | Measure | Altar | Apse | Bell Tower | Column | Dome Inner | Dome Outer | Flying Buttress | Gargoyle | Stained Glass | Vault |
 |---|---|---|---|---|---|---|---|---|---|---|
 | F1 score | 0.906 | 0.874 | 0.903 | 0.953 | 0.967 | 0.937 | 0.805 | 0.923 | 0.990 | 0.925 |
