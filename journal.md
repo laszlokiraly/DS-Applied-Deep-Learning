@@ -30,6 +30,8 @@ and uncomment # shapely==1.6.4 in requirements.txt
 
 ### Validation
 
+Before starting the pipeline I wanted to test that model and cuda are working correctly for prediction of imagenet validation dataset.
+
 Used cls hrnet w18 pretrained model from onedrive as described in https://github.com/HRNet/HRNet-Image-Classification.
 
 After
