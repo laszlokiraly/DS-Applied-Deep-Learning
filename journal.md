@@ -11,21 +11,25 @@ Check existing pytorch and cuda installation for functionality and version: **py
 
 ### Setup
 
-https://github.com/HRNet/HRNet-Image-Classification includes requirements and setup process.  
+<https://github.com/HRNet/HRNet-Image-Classification> includes requirements and setup process.  
 Required pytorch version is 0.4.1.
 
 #### Problems
+
 When installing requirements there were problems with Shapely 1.6.4 on my windows 10 machine:  
 - https://stackoverflow.com/questions/35991403/pip-install-unroll-python-setup-py-egg-info-failed-with-error-code-1#36025294
 - (https://stackoverflow.com/questions/43199480/esay-install-u-setuptools-failing-with-error-winerror-5-access-is-denied-c)
 - https://stackoverflow.com/questions/44398265/install-shapely-oserror-winerror-126-the-specified-module-could-not-be-found
 
 #### Solution
+
 -> download Shapely from https://pypi.org/project/Shapely/#files and install via wheel
 
 ```bash
 $ python -m pip install Shapely-1.6.4.post2-cp36-cp36m-win_amd64.whl
+[...]
 ```
+
 and uncomment # shapely==1.6.4 in requirements.txt
 
 ### Validation
@@ -189,8 +193,6 @@ Test: Time 0.791    Loss 0.9106     Error@1 23.244  Error@5 6.558   Accuracy@1 7
 - 1h hrnet overview
 - 5h hrnet imagenet validation of w18 model (in /hrnet-imagenet-valid)
 
-
-
 ## setting up transfer learning example
 
 https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html
@@ -207,11 +209,15 @@ Pillow was 6.0.0, upgrade to 6.2.1 helped solve the issue.
 
 ```bash
 $ pip uninstall Pillow
-...
+[...]
 $ pip install Pillow
+[...]
 ```
+
+- 2h
 
 ## unit test (wip)
 
 using [torch test](https://github.com/suriyadeepan/torchtest)
 
+- 0.5h
