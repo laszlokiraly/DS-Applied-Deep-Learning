@@ -188,3 +188,30 @@ Test: Time 0.791    Loss 0.9106     Error@1 23.244  Error@5 6.558   Accuracy@1 7
 
 - 1h hrnet overview
 - 5h hrnet imagenet validation of w18 model (in /hrnet-imagenet-valid)
+
+
+
+## setting up transfer learning example
+
+https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html
+
+### problems
+
+#### pil library
+
+```bash
+UnboundLocalError: local variable 'photoshop' referenced before assignment
+```
+
+Pillow was 6.0.0, upgrade to 6.2.1 helped solve the issue.
+
+```bash
+$ pip uninstall Pillow
+...
+$ pip install Pillow
+```
+
+## unit test (wip)
+
+using [torch test](https://github.com/suriyadeepan/torchtest)
+
