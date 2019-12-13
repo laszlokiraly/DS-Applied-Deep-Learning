@@ -195,7 +195,7 @@ Test: Time 0.791    Loss 0.9106     Error@1 23.244  Error@5 6.558   Accuracy@1 7
 
 ## setting up transfer learning example
 
-https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html
+<https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html> links to interesting transfer learning article <https://cs231n.github.io/transfer-learning/>
 
 ### problems
 
@@ -214,7 +214,7 @@ $ pip install Pillow
 [...]
 ```
 
-- 2h
+- 2.25h
 
 ## unit test (wip)
 
