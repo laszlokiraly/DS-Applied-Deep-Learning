@@ -14,7 +14,6 @@ import copy
 # interactive
 plt.ion()
 
-
 # Data augmentation and normalization for training
 # Just normalization for validation
 data_transforms = {
@@ -24,7 +23,7 @@ data_transforms = {
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ]),
-    'val': transforms.Compose([
+    'test': transforms.Compose([
         transforms.Resize(256),
         transforms.CenterCrop(224),
         transforms.ToTensor(),
@@ -32,14 +31,14 @@ data_transforms = {
     ]),
 }
 
-data_dir = '../data/hymenoptera_data'
+data_dir = '../data/heritage'
 image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x),
                                           data_transforms[x])
-                  for x in ['train', 'val']}
+                  for x in ['train', 'test']}
 dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=4,
                                              shuffle=True, num_workers=4)
-              for x in ['train', 'val']}
-dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'val']}
+              for x in ['train', 'test']}
+dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'test']}
 class_names = image_datasets['train'].classes
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -79,7 +78,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
         print('-' * 10)
 
         # Each epoch has a training and validation phase
-        for phase in ['train', 'val']:
+        for phase in ['train', 'test']:
             if phase == 'train':
                 model.train()  # Set model to training mode
             else:
@@ -121,7 +120,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
                 phase, epoch_loss, epoch_acc))
 
             # deep copy the model
-            if phase == 'val' and epoch_acc > best_acc:
+            if phase == 'test' and epoch_acc > best_acc:
                 best_acc = epoch_acc
                 best_model_wts = copy.deepcopy(model.state_dict())
 
@@ -144,7 +143,7 @@ def visualize_model(model, num_images=6):
     fig = plt.figure()
 
     with torch.no_grad():
-        for i, (inputs, labels) in enumerate(dataloaders['val']):
+        for i, (inputs, labels) in enumerate(dataloaders['test']):
             inputs = inputs.to(device)
             labels = labels.to(device)
 
@@ -163,11 +162,17 @@ def visualize_model(model, num_images=6):
                     return
         model.train(mode=was_training)
 
-model_ft = models.resnet18(pretrained=True)
+def provide_model(model_name):
+    if model_name == 'hrnet':
+        pass
+    elif model_name == 'resnet18':
+        return models.resnet18(pretrained=True)
+
+model_ft = provide_model('resnet18')
 num_ftrs = model_ft.fc.in_features
 # Here the size of each output sample is set to 2.
 # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
-model_ft.fc = nn.Linear(num_ftrs, 2)
+model_ft.fc = nn.Linear(num_ftrs, len(class_names))
 
 model_ft = model_ft.to(device)
 

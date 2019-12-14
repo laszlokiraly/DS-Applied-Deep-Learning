@@ -221,3 +221,34 @@ $ pip install Pillow
 using [torch test](https://github.com/suriyadeepan/torchtest)
 
 - 0.5h
+
+## setup transfer learning with heritage dataset
+
+### train dataset problem
+
+the train dataset only contains 128x128 images, the train dataset with different images sizes is blocked by an authorization login. Wrote email to joslla@cartif.es
+
+- 3h
+
+## TODO
+
+### mandadory
+
+- put data onto ssd to improve train time
+- f1 score
+- save model
+- application
+  - load model
+  - prediction for an image
+  - web client (simple upload button in html/css)
+  - web server (simple json response in flask)
+  - dockerize
+
+### optional
+
+- use hrnet
+  - f1 score
+  - add to application:
+    - web server
+    - prediction
+    - dockerize
