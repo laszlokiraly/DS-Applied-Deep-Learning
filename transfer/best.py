@@ -14,34 +14,6 @@ import copy
 
 model_name = 'resnet152' # hrnet. resnet152. resnet18
 batch_size = 32 # resnet18: 256, resnet152: 32 worked, 48 did not
-# 32:
-# Epoch 1/5
-# ----------
-# train Loss: 0.5822 Acc: 0.8286
-# test Loss: 0.2541 Acc: 0.9281
-
-# Epoch 2/5
-# ----------
-# train Loss: 0.2490 Acc: 0.9203
-# test Loss: 0.2161 Acc: 0.9295
-
-# Epoch 3/5
-# ----------
-# train Loss: 0.2006 Acc: 0.9367
-# test Loss: 0.2162 Acc: 0.9309
-
-# Epoch 4/5
-# ----------
-# train Loss: 0.1854 Acc: 0.9393
-# test Loss: 0.2192 Acc: 0.9302
-
-# Epoch 5/5
-# ----------
-# train Loss: 0.1651 Acc: 0.9450
-# test Loss: 0.2014 Acc: 0.9281
-
-# Training complete in 15m 37s
-
 num_workers = 4
 
 # reproducability (https://pytorch.org/docs/stable/notes/randomness.html)
