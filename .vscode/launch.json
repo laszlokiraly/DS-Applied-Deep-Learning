@@ -13,7 +13,22 @@
             "args": [
                 // "--cfg=experiments/cls_hrnet_w18_sgd_lr5e-2_wd1e-4_bs32_x100.yaml",
                 "--cfg=experiments/cls_hrnet_w18_small_v1_sgd_lr5e-2_wd1e-1_bs32_x100.yaml",
-                "--testModel=hrnetv2_w18_imagenet_pretrained.pth",
+                // "--testModel=hrnetv2_w18_imagenet_pretrained.pth",
+                "--testModel=hrnet_w18_small_model_v1.pth",
+                "--dataDir=../../data"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: hrnet transfer",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/transfer/hrnet.py",
+            "cwd": "${workspaceFolder}/transfer",
+            "args": [
+                // "--cfg=experiments/cls_hrnet_w18_sgd_lr5e-2_wd1e-4_bs32_x100.yaml",
+                "--cfg=experiments/cls_hrnet_w18_small_v1_sgd_lr5e-2_wd1e-1_bs32_x100.yaml",
+                "--testModel=model_states/hrnet_w18_small_model_v1.pth",
                 "--dataDir=../../data"
             ],
             "console": "integratedTerminal"

@@ -40,7 +40,8 @@ Used cls hrnet w18 pretrained model from onedrive as described in https://github
 
 After
 
-- hard coding one gpu instead of four
+- hard coding one gpu instead of up to four
+- sequential model instead of parallel
 - fiddling with .cuda(gpu_device)
 - and adding logging of dataset size and progress dots
 
