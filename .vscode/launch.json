@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: hrnet validation",
+            "name": "Python: hrnet imagenet validation",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/hrnet-imagenet-valid/tools/valid.py",
@@ -13,23 +13,71 @@
             "args": [
                 // "--cfg=experiments/cls_hrnet_w18_sgd_lr5e-2_wd1e-4_bs32_x100.yaml",
                 "--cfg=experiments/cls_hrnet_w18_small_v1_sgd_lr5e-2_wd1e-1_bs32_x100.yaml",
-                // "--testModel=hrnetv2_w18_imagenet_pretrained.pth",
-                "--testModel=hrnet_w18_small_model_v1.pth",
+                // "--testModel=../transfer/model_states/hrnetv2_w18_imagenet_pretrained.pth",
+                "--testModel=../transfer/model_states/hrnet_w18_small_model_v1.pth",
                 "--dataDir=../../data"
             ],
             "console": "integratedTerminal"
         },
         {
-            "name": "Python: hrnet transfer",
+            "name": "Python: hrnet transfer (small v1)",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/transfer/hrnet.py",
+            "program": "${workspaceFolder}/transfer/train.py",
             "cwd": "${workspaceFolder}/transfer",
             "args": [
-                // "--cfg=experiments/cls_hrnet_w18_sgd_lr5e-2_wd1e-4_bs32_x100.yaml",
                 "--cfg=experiments/cls_hrnet_w18_small_v1_sgd_lr5e-2_wd1e-1_bs32_x100.yaml",
                 "--testModel=model_states/hrnet_w18_small_model_v1.pth",
-                "--dataDir=../../data"
+                "--dataDir=../../data",
+                "--modelFamily=hrnet",
+                "--transferEpochs=10",
+                "--transferBatchSize=128"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: hrnet transfer (largest)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/transfer/train.py",
+            "cwd": "${workspaceFolder}/transfer",
+            "args": [
+                "--cfg=experiments/cls_hrnet_w64_sgd_lr5e-2_wd1e-4_bs32_x100.yaml",
+                "--testModel=model_states/hrnetv2_w64_imagenet_pretrained.pth",
+                "--dataDir=../../data",
+                "--modelFamily=hrnet",
+                "--transferEpochs=5",
+                "--transferBatchSize=20"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: resnet18 transfer",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/transfer/train.py",
+            "cwd": "${workspaceFolder}/transfer",
+            "args": [
+                "--cfg=experiments/cls_resnet18.yaml",
+                "--dataDir=../../data",
+                "--modelFamily=resnet18",
+                "--transferEpochs=15",
+                "--transferBatchSize=256"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: resnet152 transfer",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/transfer/train.py",
+            "cwd": "${workspaceFolder}/transfer",
+            "args": [
+                "--cfg=experiments/cls_resnet152.yaml",
+                "--dataDir=../../data",
+                "--modelFamily=resnet152",
+                "--transferEpochs=10",
+                "--transferBatchSize=32"
             ],
             "console": "integratedTerminal"
         },

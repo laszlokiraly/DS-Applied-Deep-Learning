@@ -231,25 +231,7 @@ the train dataset only contains 128x128 images, the train dataset with different
 
 - time spent: 3h
 
-## TODO
-
-### mandatory
-
-- put data onto ssd to improve train time
-- f1 score (included in https://pytorch.org/ignite/concepts.html which also has EarlyStop implemented)
-- save model
-- application
-  - load model
-  - prediction for an image
-  - web client (simple upload button in html/css)
-  - web server (simple json response in flask)
-  - dockerize
-
-### optional
-
-- use hrnet
-
-## DOING
+## Analyzing slow training and low gpu utilization
 
 - put data onto ssd to improve train time
   - Done but still slow
@@ -339,4 +321,42 @@ After 5 epochs
 
 - time spent: 6.75h
 
-- time spent total: 19.00
+## hrnet
+
+### refactoring
+
+- common python file for all transfer models
+- added launch configs for transfer learning with resnet18, resnet152, hrnet small and hrnet largest
+
+### transfer learning with hrnet
+
+full transfer learning the smallest hrnet v1 model `python train.py --cfg=experiments/cls_hrnet_w18_small_v1_sgd_lr5e-2_wd1e-1_bs32_x100.yaml --testModel=model_states/hrnet_w18_small_model_v1.pth --dataDir=../../data --modelFamily=hrnet --transferEpochs=10 --transferBatchSize=128`:
+
+full transfer learning the largest hrnet v2 model `python train.py --cfg=experiments/cls_hrnet_w64_sgd_lr5e-2_wd1e-4_bs32_
+x100.yaml --testModel=model_states/hrnetv2_w64_imagenet_pretrained.pth --dataDir=../../data --modelFamily=hrnet --transferEpochs=5`:
+
+```bash
+Epoch 5/5
+----------
+train Loss: 0.1669 Acc: 0.9487
+test Loss: 0.2010 Acc: 0.9416
+
+Training complete in 47m 4s
+Best val Acc: 0.946581
+```
+
+- time spent: 5.5h
+
+## TODO
+
+### mandatory
+
+- f1 score (included in https://pytorch.org/ignite/concepts.html which also has EarlyStop implemented)
+- application
+  - load model
+  - prediction for an image
+  - web client (simple upload button in html/css)
+  - web server (simple json response in flask)
+  - dockerize
+
+- time spent total: 24.5
