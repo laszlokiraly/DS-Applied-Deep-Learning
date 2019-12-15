@@ -123,7 +123,7 @@ def main():
         dataset,
         batch_size=config.TEST.BATCH_SIZE_PER_GPU,
         shuffle=False,
-        num_workers=1,
+        num_workers=config.WORKERS,
         pin_memory=True
     )
 

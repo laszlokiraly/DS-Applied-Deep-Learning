@@ -6,44 +6,15 @@ from torch.optim import lr_scheduler
 import numpy as np
 import torchvision
 from torchvision import datasets, models, transforms
+
+import argparse
 import matplotlib.pyplot as plt
 import time
 import os
 import copy
 
 # interactive
-plt.ion()
-
-# Data augmentation and normalization for training
-# Just normalization for validation
-data_transforms = {
-    'train': transforms.Compose([
-        transforms.RandomResizedCrop(224),
-        transforms.RandomHorizontalFlip(),
-        transforms.ToTensor(),
-        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-    ]),
-    'test': transforms.Compose([
-        transforms.Resize(256),
-        transforms.CenterCrop(224),
-        transforms.ToTensor(),
-        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-    ]),
-}
-
-data_dir = '../data/heritage'
-image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x),
-                                          data_transforms[x])
-                  for x in ['train', 'test']}
-dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=4,
-                                             shuffle=True, num_workers=4)
-              for x in ['train', 'test']}
-dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'test']}
-class_names = image_datasets['train'].classes
-
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-print(device)
+# plt.ion()
 
 def imshow(inp, title=None):
     """Imshow for Tensor."""
@@ -57,17 +28,10 @@ def imshow(inp, title=None):
         plt.title(title)
     plt.pause(0.001)  # pause a bit so that plots are updated
 
-
-# Get a batch of training data
-inputs, classes = next(iter(dataloaders['train']))
-
-# Make a grid from batch
-out = torchvision.utils.make_grid(inputs)
-
 # imshow(out, title=[class_names[x] for x in classes])
 
 
-def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
+def train_model(model, dataset_sizes, dataloaders, device, criterion, optimizer, scheduler, num_epochs=25):
     since = time.time()
 
     best_model_wts = copy.deepcopy(model.state_dict())
@@ -136,7 +100,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
     return model
 
 
-def visualize_model(model, num_images=6):
+def visualize_model(model, class_names, dataloaders, device, num_images=6):
     was_training = model.training
     model.eval()
     images_so_far = 0
@@ -168,50 +132,128 @@ def provide_model(model_name):
     elif model_name == 'resnet18':
         return models.resnet18(pretrained=True)
 
-model_ft = provide_model('resnet18')
-num_ftrs = model_ft.fc.in_features
-# Here the size of each output sample is set to 2.
-# Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
-model_ft.fc = nn.Linear(num_ftrs, len(class_names))
-
-model_ft = model_ft.to(device)
-
-criterion = nn.CrossEntropyLoss()
-
-# Observe that all parameters are being optimized
-optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
-
-# Decay LR by a factor of 0.1 every 7 epochs
-exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
-
-model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=25)
-
-visualize_model(model_ft)
 
 
-model_conv = torchvision.models.resnet18(pretrained=True)
-for param in model_conv.parameters():
-    param.requires_grad = False
+# plt.ioff()
+# plt.show()
 
-# Parameters of newly constructed modules have requires_grad=True by default
-num_ftrs = model_conv.fc.in_features
-model_conv.fc = nn.Linear(num_ftrs, 2)
 
-model_conv = model_conv.to(device)
+def parse_args():
+    parser = argparse.ArgumentParser(description='Train keypoints network')
+    
+    parser.add_argument('--modelName',
+                        help='model name to use for trainin: [resnet18]',
+                        required=False,
+                        default='resnet18',
+                        type=str)
 
-criterion = nn.CrossEntropyLoss()
+    parser.add_argument('--dataDir',
+                        help='data directory (containing test and train subfolders with classes)',
+                        type=str,
+                        # default='../../data/heritage')
+                        default='C:\\data\\heritage')
+    args = parser.parse_args()
 
-# Observe that only parameters of final layer are being optimized as
-# opposed to before.
-optimizer_conv = optim.SGD(model_conv.fc.parameters(), lr=0.001, momentum=0.9)
+    return args
 
-# Decay LR by a factor of 0.1 every 7 epochs
-exp_lr_scheduler = lr_scheduler.StepLR(optimizer_conv, step_size=7, gamma=0.1)
+def main():
+    args = parse_args()
+    data_dir = args.dataDir
+    modelName = args.modelName
+    num_epochs = 25
+    
+    # data loader
+    batch_size=4
+    pin_memory=False
+    num_workers=4
+    shuffle=True
 
-model_conv = train_model(model_conv, criterion, optimizer_conv,
-                         exp_lr_scheduler, num_epochs=25)
+    # Data augmentation and normalization for training
+    # Just normalization for validation
+    data_transforms = {
+        'train': transforms.Compose([
+            transforms.RandomResizedCrop(224),
+            transforms.RandomHorizontalFlip(),
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+        ]),
+        'test': transforms.Compose([
+            transforms.Resize(256),
+            transforms.CenterCrop(224),
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+        ]),
+    }
 
-visualize_model(model_conv)
+    image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x),
+                                            data_transforms[x])
+                    for x in ['train', 'test']}
+    dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=batch_size,
+                                                pin_memory=pin_memory, shuffle=False, num_workers=num_workers)
+                for x in ['train', 'test']}
+    dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'test']}
+    class_names = image_datasets['train'].classes
 
-plt.ioff()
-plt.show()
+    torch.cuda.init()
+    
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+    print(torch.cuda.initial_seed())
+    print(device)
+    print(torch.cuda.get_device_capability(device))
+
+    # Get a batch of training data
+    inputs, classes = next(iter(dataloaders['train']))
+
+    # Make a grid from batch
+    out = torchvision.utils.make_grid(inputs)
+
+    # model_ft = provide_model(modelName)
+    # num_ftrs = model_ft.fc.in_features
+    # # Here the size of each output sample is set to 2.
+    # # Alternatively, it can be generalized to nn.Linear(num_ftrs, len(class_names)).
+    # model_ft.fc = nn.Linear(num_ftrs, len(class_names))
+
+    # model_ft = model_ft.to(device)
+
+    # criterion = nn.CrossEntropyLoss()
+
+    # # Observe that all parameters are being optimized
+    # optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
+
+    # # Decay LR by a factor of 0.1 every 7 epochs
+    # exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+
+    # model_ft = train_model(model_ft, dataset_sizes, dataloaders, device, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=num_epochs)
+
+    # visualize_model(model_ft, class_names, dataloaders, device)
+
+
+    model_conv = torchvision.models.resnet18(pretrained=True)
+    for param in model_conv.parameters():
+        param.requires_grad = False
+
+    # Parameters of newly constructed modules have requires_grad=True by default
+    num_ftrs = model_conv.fc.in_features
+    model_conv.fc = nn.Linear(num_ftrs, len(class_names))
+
+    model_conv = model_conv.to(device)
+
+    criterion = nn.CrossEntropyLoss()
+
+    # Observe that only parameters of final layer are being optimized as
+    # opposed to before.
+    optimizer_conv = optim.SGD(model_conv.fc.parameters(), lr=0.001, momentum=0.9)
+
+    # Decay LR by a factor of 0.1 every 7 epochs
+    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_conv, step_size=7, gamma=0.1)
+
+    model_conv = train_model(model_conv, dataset_sizes, dataloaders, device,
+                    criterion, optimizer_conv, exp_lr_scheduler, num_epochs=num_epochs)
+
+    # visualize_model(model_conv, class_names, dataloaders, device)
+
+
+
+if __name__ == '__main__':
+    main()

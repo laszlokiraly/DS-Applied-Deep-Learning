@@ -5,7 +5,7 @@
 Existing Hard/Software: **Intel i7 2600K @3.40GHz, 24GB RAM, GTX-1080-TI 11GB RAM**  
 Check existing pytorch and cuda installation for functionality and version: **pytorch version: 1.1.0, cuda tests OK**
 
-- 0.5h setup cuda
+- time spent: 0.5h setup cuda
 
 ## HR-net
 
@@ -190,8 +190,8 @@ number of images: 50000
 Test: Time 0.791    Loss 0.9106     Error@1 23.244  Error@5 6.558   Accuracy@1 76.756       Accuracy@5 93.442
 ```
 
-- 1h hrnet overview
-- 5h hrnet imagenet validation of w18 model (in /hrnet-imagenet-valid)
+- time spent: 1h hrnet overview
+- time spent: 5h hrnet imagenet validation of w18 model (in /hrnet-imagenet-valid)
 
 ## setting up transfer learning example
 
@@ -214,13 +214,13 @@ $ pip install Pillow
 [...]
 ```
 
-- 2.25h
+- time spent: 2.25h
 
 ## unit test (wip)
 
 using [torch test](https://github.com/suriyadeepan/torchtest)
 
-- 0.5h
+- time spent: 0.5h
 
 ## setup transfer learning with heritage dataset
 
@@ -228,14 +228,14 @@ using [torch test](https://github.com/suriyadeepan/torchtest)
 
 the train dataset only contains 128x128 images, the train dataset with different images sizes is blocked by an authorization login. Wrote email to joslla@cartif.es
 
-- 3h
+- time spent: 3h
 
 ## TODO
 
-### mandadory
+### mandatory
 
 - put data onto ssd to improve train time
-- f1 score
+- f1 score (included in https://pytorch.org/ignite/concepts.html which also has EarlyStop implemented)
 - save model
 - application
   - load model
@@ -247,8 +247,95 @@ the train dataset only contains 128x128 images, the train dataset with different
 ### optional
 
 - use hrnet
-  - f1 score
-  - add to application:
-    - web server
-    - prediction
-    - dockerize
+
+## DOING
+
+- put data onto ssd to improve train time
+  - Done but still slow
+
+## The End
+
+```bash
+$ nvidia-smi.exe
+Sat Dec 14 19:29:01 2019
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 441.66       Driver Version: 441.66       CUDA Version: 10.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name            TCC/WDDM | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 108... WDDM  | 00000000:01:00.0  On |                  N/A |
+|  0%   39C    P2    66W / 250W |   1666MiB / 11264MiB |     14%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|    0      1380    C+G   Insufficient Permissions                   N/A      |
+|    0      6896    C+G   ...dows.Cortana_cw5n1h2txyewy\SearchUI.exe N/A      |
+|    0      9464    C+G   Insufficient Permissions                   N/A      |
+|    0      9736      C   ...aszlo\Anaconda3\envs\pytorch\python.exe N/A      |
+```
+
+tried installing different pytorch and cuda combinations, but no luck: cuda gets detected but computation runs always on cpu (maybe even slower because tensors have to be exchanged between gpu and cpu?)
+
+runs even slower on google colab, wtf? even fails with an error
+```bash
+Epoch 0/1
+----------
+train Loss: 0.6294 Acc: 0.7746
+
+---------------------------------------------------------------------------
+
+RuntimeError                              Traceback (most recent call last)
+
+<ipython-input-13-7ef379d0c739> in <module>()
+     75 
+     76 model_conv = train_model(model_conv, dataset_sizes, dataloaders, device,
+---> 77                 criterion, optimizer_conv, exp_lr_scheduler, num_epochs=num_epochs)
+
+<ipython-input-5-efe041641070> in train_model(model, dataset_sizes, dataloaders, device, criterion, optimizer, scheduler, num_epochs)
+     40 
+     41                 # statistics
+---> 42                 running_loss += loss.item() * inputs.size(0)
+     43                 running_corrects += torch.sum(preds == labels.data)
+     44             if phase == 'train':
+
+RuntimeError: CUDA error: device-side assert triggered
+```
+
+## batch_size/workers
+
+see learnings
+
+## resnet152
+
+batchsize 64:  
+
+```bash
+RuntimeError: cuDNN error: CUDNN_STATUS_MAPP 
+```
+
+-> https://github.com/pytorch/pytorch/issues/27588  
+
+reduce batchsize or disable cudnn
+
+```config
+torch.backends.cudnn.enabled=False
+```
+
+After 5 epochs
+
+```bash
+# Epoch 5/5
+# ----------
+# train Loss: 0.1651 Acc: 0.9450
+# test Loss: 0.2014 Acc: 0.9281
+
+# Training complete in 15m 37s
+```
+
+- time spent: 6.75h
+
+- time spent total: 19.00
