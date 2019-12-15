@@ -5,6 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: hrnet validation",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/hrnet-imagenet-valid/tools/valid.py",
+            "cwd": "${workspaceFolder}/hrnet-imagenet-valid",
+            "args": [
+                // "--cfg=experiments/cls_hrnet_w18_sgd_lr5e-2_wd1e-4_bs32_x100.yaml",
+                "--cfg=experiments/cls_hrnet_w18_small_v1_sgd_lr5e-2_wd1e-1_bs32_x100.yaml",
+                "--testModel=hrnetv2_w18_imagenet_pretrained.pth",
+                "--dataDir=../../data"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Python: Current File (Integrated Terminal)",
             "type": "python",
             "request": "launch",
