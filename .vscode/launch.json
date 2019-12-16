@@ -30,7 +30,7 @@
                 "--testModel=model_states/hrnet_w18_small_model_v1.pth",
                 "--dataDir=../../data",
                 "--modelFamily=hrnet",
-                "--transferEpochs=10",
+                "--transferEpochs=25",
                 "--transferBatchSize=128"
             ],
             "console": "integratedTerminal"
@@ -46,7 +46,7 @@
                 "--testModel=model_states/hrnetv2_w64_imagenet_pretrained.pth",
                 "--dataDir=../../data",
                 "--modelFamily=hrnet",
-                "--transferEpochs=10",
+                "--transferEpochs=25",
                 "--transferBatchSize=20"
             ],
             "console": "integratedTerminal"
@@ -61,7 +61,7 @@
                 "--cfg=experiments/cls_resnet18.yaml",
                 "--dataDir=../../data",
                 "--modelFamily=resnet18",
-                "--transferEpochs=15",
+                "--transferEpochs=25",
                 "--transferBatchSize=256"
             ],
             "console": "integratedTerminal"
@@ -76,7 +76,7 @@
                 "--cfg=experiments/cls_resnet152.yaml",
                 "--dataDir=../../data",
                 "--modelFamily=resnet152",
-                "--transferEpochs=10",
+                "--transferEpochs=25",
                 "--transferBatchSize=32"
             ],
             "console": "integratedTerminal"

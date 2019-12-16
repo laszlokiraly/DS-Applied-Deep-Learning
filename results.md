@@ -12,63 +12,74 @@
 
 BatchSize=128
 Workers=4
-Epochs=10
+Epochs=25
 
 ```bash
-Epoch 10/10
+Epoch 18/25
 ----------
-train Loss: 0.2350 Acc: 0.9261
-test Loss: 0.3043 Acc: 0.8974
+train Loss: 0.2317 Acc: 0.9257
+test Loss: 0.2990 Acc: 0.9017
 
 F1 Score:
   altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
 -------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
- 0.9286  0.6842        0.8462    0.8512         0.9143          0.886             0.8667      0.9573           0.9693   0.9194
+ 0.9353   0.713        0.8521     0.866          0.922         0.9043             0.8442      0.9437           0.9728   0.9254
 
-Training complete in 9m 28s
-Best val Acc: 0.897436
+Epoch 25/25
+----------
+train Loss: 0.2265 Acc: 0.9321
+test Loss: 0.3011 Acc: 0.9017
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9353     0.7        0.8555    0.8564          0.922         0.9037             0.8497      0.9483           0.9797   0.9249
+
+Training complete in 23m 6s
+Best val Acc: 0.901709
 ```
 
 ## resnet18
 
 BatchSize=256
 Workers=4
-Epochs=15
+Epochs=25
 
 ```bash
-Epoch 15/15
+Epoch 23/25
 ----------
-train Loss: 0.2874 Acc: 0.9139
-test Loss: 0.3614 Acc: 0.8917
+train Loss: 0.2837 Acc: 0.9111
+test Loss: 0.3601 Acc: 0.8932
 
 F1 Score:
   altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
 -------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
-  0.942  0.6667        0.8653    0.8427         0.9014         0.8707             0.7571      0.9516           0.9586   0.9298
+  0.942  0.6602        0.8629    0.8427         0.9078         0.8762              0.766      0.9536           0.9622   0.9298
 
-Training complete in 10m 21s
-Best val Acc: 0.891738
+Training complete in 16m 56s
+Best val Acc: 0.893162
+
 ```
 
 ## resnet152
 
 BatchSize=32
 Workers=4
-Epochs=10
+Epochs=25
 
 ```bash
-Epoch 9/10
+Epoch 11/25
 ----------
-train Loss: 0.1310 Acc: 0.9580
-test Loss: 0.1859 Acc: 0.9416
+train Loss: 0.1198 Acc: 0.9607
+test Loss: 0.1652 Acc: 0.9444
 
 F1 Score:
   altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
 -------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
- 0.9524  0.8713        0.9188    0.9423         0.9091         0.9211             0.9388      0.9852            0.951   0.9391
+   0.96  0.8738        0.9193    0.9448         0.9014         0.9356             0.9262      0.9853           0.9547   0.9446
 
-Training complete in 32m 57s
-Best val Acc: 0.941595
+Training complete in 79m 41s
+Best val Acc: 0.944444
 ```
 
 ## hrnet largest
@@ -78,17 +89,16 @@ Workers=4
 Epochs=10
 
 ```bash
-Epoch 9/10
+Epoch 10/25
 ----------
-train Loss: 0.1109 Acc: 0.9629
-test Loss: 0.1847 Acc: 0.9409
+train Loss: 0.1009 Acc: 0.9681
+test Loss: 0.1793 Acc: 0.9487
 
 F1 Score:
   altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
 -------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
- 0.9203  0.8723        0.9313    0.9317         0.9559           0.92             0.9459      0.9831           0.9658   0.9275
+ 0.9373  0.9091         0.944    0.9458         0.9489          0.936             0.9396      0.9787            0.966   0.9364
 
-Training complete in 93m 37s
-Best val Acc: 0.940883
-
+Training complete in 221m 59s
+Best val Acc: 0.948718
 ```
