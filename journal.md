@@ -347,9 +347,9 @@ Best val Acc: 0.946581
 
 - time spent: 5.5h
 
-## added f1 score and conda environment setup
+## added f1 score and conda environment setup and experiment runs
 
-- time spent: 2h
+- time spent: 2.5h
 
 ## setup
 
@@ -363,7 +363,7 @@ conda install scikit-learn
 conda install tabulate
 ```
 
-- time spent total: 26.5
+- time spent total: 27.0
 
 ## TODO
 

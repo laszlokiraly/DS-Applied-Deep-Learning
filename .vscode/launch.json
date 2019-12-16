@@ -46,7 +46,7 @@
                 "--testModel=model_states/hrnetv2_w64_imagenet_pretrained.pth",
                 "--dataDir=../../data",
                 "--modelFamily=hrnet",
-                "--transferEpochs=5",
+                "--transferEpochs=10",
                 "--transferBatchSize=20"
             ],
             "console": "integratedTerminal"

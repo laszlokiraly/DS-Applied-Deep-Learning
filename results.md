@@ -27,7 +27,6 @@ F1 Score:
 
 Training complete in 9m 28s
 Best val Acc: 0.897436
-saving final model state to ./hrnet_final_state.pth.tar
 ```
 
 ## resnet18
@@ -49,5 +48,47 @@ F1 Score:
 
 Training complete in 10m 21s
 Best val Acc: 0.891738
-saving final model state to ./resnet18_final_state.pth.tar
+```
+
+## resnet152
+
+BatchSize=32
+Workers=4
+Epochs=10
+
+```bash
+Epoch 9/10
+----------
+train Loss: 0.1310 Acc: 0.9580
+test Loss: 0.1859 Acc: 0.9416
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9524  0.8713        0.9188    0.9423         0.9091         0.9211             0.9388      0.9852            0.951   0.9391
+
+Training complete in 32m 57s
+Best val Acc: 0.941595
+```
+
+## hrnet largest
+
+BatchSize=20
+Workers=4
+Epochs=10
+
+```bash
+Epoch 9/10
+----------
+train Loss: 0.1109 Acc: 0.9629
+test Loss: 0.1847 Acc: 0.9409
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9203  0.8723        0.9313    0.9317         0.9559           0.92             0.9459      0.9831           0.9658   0.9275
+
+Training complete in 93m 37s
+Best val Acc: 0.940883
+
 ```
