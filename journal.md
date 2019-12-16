@@ -347,16 +347,32 @@ Best val Acc: 0.946581
 
 - time spent: 5.5h
 
+## added f1 score and conda environment setup
+
+- time spent: 2h
+
+## setup
+
+```bash
+conda create -n pytorch_gpu
+source activate pytorch_gpu
+conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+pip install yacs
+conda install matplotlib
+conda install scikit-learn
+conda install tabulate
+```
+
+- time spent total: 26.5
+
 ## TODO
 
 ### mandatory
 
-- f1 score (included in https://pytorch.org/ignite/concepts.html which also has EarlyStop implemented)
 - application
   - load model
   - prediction for an image
   - web client (simple upload button in html/css)
   - web server (simple json response in flask)
   - dockerize
-
-- time spent total: 24.5
+  - test with https://de.wikipedia.org/wiki/Apsiskirche

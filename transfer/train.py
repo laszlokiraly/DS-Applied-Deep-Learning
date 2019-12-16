@@ -6,6 +6,8 @@ from torch.optim import lr_scheduler
 import numpy as np
 import torchvision
 from torchvision import datasets, transforms
+from sklearn import metrics
+from tabulate import tabulate
 import matplotlib.pyplot as plt
 import time
 import os
@@ -158,6 +160,11 @@ def validate_hrnet(args):
     validate(config, valid_loader, model, criterion, './log',
              '/output', None)
 
+def print_f1_score(f1_result):
+    lablenames = ['altar', 'apse', 'bell_tower', 'column', 'dome(inner)', 'dome(outer)', 'flying_buttress', 'gargoyle', 'stained_glass', 'vault']
+    print("F1 Score:")
+    print(tabulate([["{0:.4f}".format(r) for r in f1_result]], headers=lablenames))
+
 def main():
     args = parse_args()
 
@@ -244,6 +251,9 @@ def main():
             print('Epoch {}/{}'.format(epoch + 1, num_epochs))
             print('-' * 10)
 
+            true_positives = None
+            positives = None
+
             # Each epoch has a training and validation phase
             for phase in ['train', 'test']:
                 if phase == 'train':
@@ -253,6 +263,8 @@ def main():
 
                 running_loss = 0.0
                 running_corrects = 0
+                y_hats = torch.LongTensor()
+                ys = torch.LongTensor()
 
                 # Iterate over data.
                 for inputs, labels in dataloaders[phase]:
@@ -277,6 +289,11 @@ def main():
                     # statistics
                     running_loss += loss.item() * inputs.size(0)
                     running_corrects += torch.sum(preds == labels.data)
+
+                    if phase == 'test':
+                        y_hats = torch.cat([preds.cpu(), y_hats], dim=0)
+                        ys = torch.cat([labels.cpu(), ys], dim=0)
+
                 if phase == 'train':
                     scheduler.step()
 
@@ -286,6 +303,10 @@ def main():
                 print('{} Loss: {:.4f} Acc: {:.4f}'.format(
                     phase, epoch_loss, epoch_acc))
 
+                if phase == 'test':
+                    print()
+                    print_f1_score(metrics.f1_score(y_hats.cpu(), ys.cpu(), average=None))
+                
                 # deep copy the model
                 if phase == 'test' and epoch_acc > best_acc:
                     best_acc = epoch_acc
