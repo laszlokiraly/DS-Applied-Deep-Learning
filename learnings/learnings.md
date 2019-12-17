@@ -17,4 +17,6 @@ hd,  workers 4, batch size 128: ~ 3.0 GB GPU Memory:05 min
 
 ## dependencies
 
-It turned out that for my usecase yacs (`pip install yacs`) and matplotlib (`conda install matplotlib`) sufficed. The hassle with shapely was probably not necessary at all. The pillow problem was not existing after clean installation of pytorch (`conda install pytorch torchvision cudatoolkit=10.1 -c pytorch`) in a new conda environment.
+It was not necessary to have all dependencies installed for my use case. I lost time with setting up Shapely which was not needed in the end.  
+It turned out that yacs (`pip install yacs`) and matplotlib (`conda install matplotlib`) sufficed. The hassle with shapely was probably not necessary at all.  
+The pillow problem was not existing after clean installation of pytorch (`conda install pytorch torchvision cudatoolkit=10.1 -c pytorch`) in a new conda environment.
