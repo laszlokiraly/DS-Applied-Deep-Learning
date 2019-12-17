@@ -369,10 +369,10 @@ pip install --upgrade torchtest
 - test run all models with 25 epochs
 - document results
 - result table and interpretation
+- documentation
+- time spent: 2h
 
-- time spent: 1.5h
-
-- time spent total: 28.5
+- time spent total: 29
 
 ## TODO
 
