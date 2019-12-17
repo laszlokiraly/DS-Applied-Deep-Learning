@@ -8,7 +8,7 @@
   0.906   0.874         0.903     0.953         0.967           0.937              0.805       0.923            0.990    0.925
 ```
 
-## hrnet small v1
+## hrnet v1 small
 
 BatchSize=128
 Workers=4
@@ -82,11 +82,11 @@ Training complete in 79m 41s
 Best val Acc: 0.944444
 ```
 
-## hrnet largest
+## hrnet v2 largest
 
 BatchSize=20
 Workers=4
-Epochs=10
+Epochs=25
 
 ```bash
 Epoch 10/25
@@ -114,3 +114,4 @@ Best val Acc: 0.948718
 **resnet 152**    |**0.96**|0.8738|**0.9193**|0.9448|0.9014|0.9356|**0.9262**|**0.9853**|0.9547|**0.9446**|+/-0
 **hrnet v2 largest**|**0.9373**|**0.9091**|**0.944**|0.9458|0.9489|0.936|**0.9396**|**0.9787**|0.966|**0.9364**|**+2**
 
+*hrnet v2* beats the baseline model in six of ten classes and the f1 score is remarkable well balanced over all classes. The baseline f1 scores `max - min` is 0.185, whereas *hrnet v2* max distance of the classes is 0.0696.
