@@ -375,8 +375,8 @@ conda install tabulate
 
 ## TODO
 
-### mandatory
-
+- test case with freezing pretrained model
+- refactor and prettify code
 - application
   - load model
   - prediction for an image
