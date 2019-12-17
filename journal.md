@@ -372,7 +372,7 @@ pip install --upgrade torchtest
 - documentation
 - time spent: 2h
 
-- time spent total: 29
+- time spent total: 29 hours
 
 ## TODO
 
