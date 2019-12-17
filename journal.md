@@ -361,6 +361,7 @@ pip install yacs
 conda install matplotlib
 conda install scikit-learn
 conda install tabulate
+pip install --upgrade torchtest
 ```
 
 ## evaluation
