@@ -363,7 +363,15 @@ conda install scikit-learn
 conda install tabulate
 ```
 
-- time spent total: 27.0
+## evaluation
+
+- test run all models with 25 epochs
+- document results
+- result table and interpretation
+
+- time spent: 1.5h
+
+- time spent total: 28.5
 
 ## TODO
 
