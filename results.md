@@ -102,3 +102,10 @@ F1 Score:
 Training complete in 221m 59s
 Best val Acc: 0.948718
 ```
+
+
+## Result Table
+
+**model**|**altar**|**apse**|**bell tower**|**column**|**dome(inner)**|**dome(outer)**|**flying buttress**|**gargoyle**|**stained glass**|**vault**
+:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
+baseline|0.906|0.874|0.903|0.953|0.967|0.937|0.805|0.923|0.990|0.925
