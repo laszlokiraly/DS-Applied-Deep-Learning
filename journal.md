@@ -372,7 +372,13 @@ pip install --upgrade torchtest
 - documentation
 - time spent: 2h
 
-- time spent total: 29 hours
+## refactor code
+
+- time spent: 2h
+
+## total
+
+- time spent total: 31 hours
 
 ## TODO
 
