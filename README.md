@@ -102,3 +102,13 @@ Additional parameters are defined as extra arguments:
 - transferDataFolder: folder where the [heritage dataset](https://old.datahub.io/dataset/architectural-heritage-elements-image-dataset) resides in
 
 see `transfer/run.sh` for four usages of transfer learning, which have been used for training and testing.
+
+## next steps
+
+### deployment
+- https://medium.com/datadriveninvestor/deploy-your-pytorch-model-to-production-f69460192217
+- https://github.com/alecrubin/pytorch-serverless/
+- ...
+
+### optimization
+- prune model?
