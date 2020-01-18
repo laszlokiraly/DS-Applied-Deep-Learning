@@ -13,6 +13,8 @@ from config_builder import from_args
 from model_provider import provide_model
 import models
 
+class_names = ['altar','apse','bell tower','column','dome(inner)','dome(outer)','flying_buttress','gargoyle','stained_glass','vault']
+
 # https://towardsdatascience.com/how-to-train-an-image-classifier-in-pytorch-and-use-it-to-perform-basic-inference-on-single-images-99465a1e9bf5
 def predict_image(image, device):
     test_transforms = transforms.Compose([
@@ -28,6 +30,12 @@ def predict_image(image, device):
     output = model(input)
     index = output.data.cpu().numpy().argmax()
     return index
+
+def from_output(output):
+    class_name = class_names[int(torch.max(output.data.cpu(), 1)[1].numpy())]
+    class_probability = torch.max(torch.nn.functional.softmax(output.data.cpu(), dim=1)).item()
+    print(f'predicting {class_name} with a probability of {round(class_probability,4)*100}%')
+    return (class_name, class_probability)
 
 def main():
     config = from_args()
@@ -45,12 +53,6 @@ def main():
     # Data augmentation and normalization for training
     # Just normalization for validation
     data_transforms = {
-        'train': transforms.Compose([
-            transforms.RandomResizedCrop(224),
-            transforms.RandomHorizontalFlip(),
-            transforms.ToTensor(),
-            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-        ]),
         'test': transforms.Compose([
             transforms.Resize(256),
             transforms.CenterCrop(224),
@@ -59,26 +61,17 @@ def main():
         ]),
     }
 
-    class_names = ['altar','apse','bell tower','column','dome(inner)','dome(outer)','flying_buttress','gargoyle','stained_glass','vault']
-    # device = torch.device("cpu")
-    # model = provide_model(model_name, len(class_names), device).to(device)
-    # model.load_state_dict(torch.load(os.path.join('./hrnet_final_state_largest_94_epochs10.pth.tar')))
-    # model.eval()
-
-    # device = torch.device("cuda:0")
     device = torch.device("cpu")
     model = torch.load(os.path.join('./' + model_name + '_final_model.pt')).to(device)
     model.eval()
 
-    image_path = '../../data/heritage/test/altar/0a020a2f-e72a-4663-ae34-4d236e7c5ea2.jpg'
+    # image_path = '../../data/heritage/test/dome(inner)/36412379281_0b85042e9c_n.jpg'
+    # output = model(data_transforms['test'](Image.open(image_path)).unsqueeze_(0).to(device))
+    # class_name, class_probability = from_output(output)
+
+    image_path = 'St._Dionysius,_Rheine_-_Josef-Altar.jpg'
     output = model(data_transforms['test'](Image.open(image_path)).unsqueeze_(0).to(device))
-    print(f'{class_names[int(torch.max(output.data.cpu(), 1)[1].numpy())]}')
-    image_path = '../../data/heritage/test/altar/157eb411-7954-4029-83e1-bc857f97c5dd.jpg'
-    output = model(data_transforms['test'](Image.open(image_path)).unsqueeze_(0).to(device))
-    print(f'{class_names[int(torch.max(output.data.cpu(), 1)[1].numpy())]}')
-    image_path = '../../data/heritage/test/dome(inner)/36412379281_0b85042e9c_n.jpg'
-    output = model(data_transforms['test'](Image.open(image_path)).unsqueeze_(0).to(device))
-    print(f'{class_names[int(torch.max(output.data.cpu(), 1)[1].numpy())]}')
+    class_name, class_probability = from_output(output)
 
 if __name__ == '__main__':
     main()
