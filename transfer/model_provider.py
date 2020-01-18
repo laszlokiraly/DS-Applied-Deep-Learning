@@ -5,13 +5,14 @@ from torchvision import datasets, transforms
 import os
 
 import _add_hrnet_lib # needed for import of hrnet library classes
+import models
 # hrnet library classes
 from core.function import validate
 from config import config
 from config import update_config
 from utils.modelsummary import get_model_summary
 
-def load_hrnet_pretrained():
+def load_hrnet_pretrained(device):
     # cudnn related setting
     torch.backends.cudnn.benchmark = config.CUDNN.BENCHMARK
     torch.backends.cudnn.deterministic = config.CUDNN.DETERMINISTIC
@@ -20,11 +21,13 @@ def load_hrnet_pretrained():
     model = eval('models.'+config.MODEL.NAME+'.get_cls_net')(
         config)
 
-    device = torch.device("cuda:0")
     dump_input = torch.rand(
         (1, 3, config.MODEL.IMAGE_SIZE[1], config.MODEL.IMAGE_SIZE[0])
     )
-    print(get_model_summary(model.cuda(device), dump_input.cuda(device), verbose=True))
+    if device.type == 'cpu':
+        print(get_model_summary(model, dump_input, verbose=True))
+    else:
+        print(get_model_summary(model.cuda(device), dump_input.cuda(device), verbose=True))
 
     print('=> loading model from {}'.format(config.TEST.MODEL_FILE))
     model.load_state_dict(torch.load(config.TEST.MODEL_FILE))
@@ -37,10 +40,10 @@ def provide_model(model_name, classes_count, device, full=True):
     if full is provided and set to False, then the weights of the pretrained are set unmodifiable
     """
     if model_name == 'hrnet':
-        hrnet_model = load_hrnet_pretrained()
+        hrnet_model = load_hrnet_pretrained(device)
         num_ftrs = hrnet_model.classifier.in_features
         hrnet_model.classifier = nn.Linear(num_ftrs, classes_count)
-        model = nn.Sequential(hrnet_model).cuda(device)
+        model = nn.Sequential(hrnet_model).to(device)
     elif model_name == 'resnet18':
         resnet18 = torchvision.models.resnet18(pretrained=True)
         num_ftrs = resnet18.fc.in_features

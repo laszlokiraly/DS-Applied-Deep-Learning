@@ -10,7 +10,7 @@ from model_trainer import train_model
 from plots import visualize_data
 from config_builder import from_args
 from model_provider import provide_model
-
+import dill as dill
 
 def main():
     config = from_args()
@@ -45,14 +45,15 @@ def main():
     }
 
     image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x),
-                                              data_transforms[x])
-                      for x in ['train', 'test']}
+                                            data_transforms[x])
+                    for x in ['train', 'test']}
     dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=batch_size,
-                                                  pin_memory=True, shuffle=True, num_workers=num_workers)
-                   for x in ['train', 'test']}
+                                                pin_memory=True, shuffle=True, num_workers=num_workers)
+                for x in ['train', 'test']}
     class_names = image_datasets['train'].classes
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    print(f'using {device.type} for pytorch.')
 
     model_ft = provide_model(model_name, len(class_names), device).to(device)
 
@@ -66,16 +67,15 @@ def main():
         optimizer_ft, step_size=7, gamma=0.1)
 
     model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,
-                           image_datasets, dataloaders, device, num_epochs=num_epochs)
+                        image_datasets, dataloaders, device, num_epochs=num_epochs)
 
-    final_model_state_file = os.path.join('./',
-                                          model_name + '_final_state.pth.tar')
-    print('saving final model state to {}'.format(final_model_state_file))
-    torch.save(model_ft.state_dict(), final_model_state_file)
+    final_model_state_file = os.path.join('./' + model_name + '_final_model.pt')
+    print(f'saving final model to {final_model_state_file}')
+    torch.save(model_ft, final_model_state_file, pickle_module=dill)
 
     if visualize:
         visualize_data(model_ft, class_names,
-                       dataloaders, device, num_images=10)
+                    dataloaders, device, num_images=10)
 
 
 if __name__ == '__main__':
