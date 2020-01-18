@@ -113,5 +113,8 @@ Best val Acc: 0.948718
 **resnet 18**     |**0.942**|0.6602|0.8629|0.8427|0.9078|0.8762|0.766|**0.9536**|**0.9622**|**0.9298**|-2
 **resnet 152**    |**0.96**|0.8738|**0.9193**|0.9448|0.9014|0.9356|**0.9262**|**0.9853**|0.9547|**0.9446**|+/-0
 **hrnet v2 largest**|**0.9373**|**0.9091**|**0.944**|0.9458|0.9489|0.936|**0.9396**|**0.9787**|0.966|**0.9364**|**+2**
+**II: resnet 152**|**0.9407**|**0.8889**|0.9003|**0.9369**|0.9051|0.9103|**0.9589**|**0.9895**|0.9796|**0.9443**|**+2**
 
 *hrnet v2* beats the baseline model in six of ten classes and the f1 score is remarkable well balanced over all classes. The baseline f1 scores `max - min` is 0.185, whereas *hrnet v2* max distance of the classes is 0.0696.
+
+Remark: The procedure of saving the transferred model has changed, so a second model of `II: resnet 152` and `` with same parameters was trained and added to the comparison.

@@ -376,9 +376,44 @@ pip install --upgrade torchtest
 
 - time spent: 2h
 
+## predict single image
+
+- time spent: 4.5h
+
 ## total
 
-- time spent total: 31 hours
+- time spent total: 35.5 hours
+
+## prediction
+
+### suddenly python did not find torch anymore
+
+```python
+Traceback (most recent call last):
+  File "train.py", line 2, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+```
+
+Obviously conda was broken somehow:
+
+```bash
+(pytorch_gpu)
+Laszlo@Highbit MINGW64 /m/projects/DS-Applied-Deep-Learning/transfer (master)
+$ which python
+/c/Users/Laszlo/Anaconda3/python
+```
+
+solution: directly calling `C:\\Users\\Laszlo\\Anaconda3\\envs\\pytorch_gpu\\python.exe` helped. In the end I reinstalled anaconda (and lost ALL my environments).
+
+### loading of model failed
+
+```
+RuntimeError: Error(s) in loading state_dict for HighResolutionNet:
+	Missing key(s) in state_dict: "conv1.weight", "bn1.weight", "bn1.bias", "bn1.running_mean", "bn1.running_var", "conv2.weight", "bn2.weight", "bn2.bias", "bn2.running_mean", "bn2.running_var", "layer1.0.conv1.weight",
+```
+
+solution: did the training again and saved the model in total (not the state).
 
 ## TODO
 
