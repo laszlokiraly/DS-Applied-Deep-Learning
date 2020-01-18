@@ -1,0 +1,254 @@
+cuda:0
+Epoch 1/25
+----------
+train Loss: 0.5790 Acc: 0.8232
+test Loss: 0.2687 Acc: 0.9160
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9362    0.75        0.9042    0.8866         0.9429         0.9032             0.8062      0.9496           0.9691   0.9544
+
+Epoch 2/25
+----------
+train Loss: 0.2495 Acc: 0.9198
+test Loss: 0.2723 Acc: 0.9152
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9125  0.8333        0.9062    0.8929         0.9116         0.9132             0.8293       0.961           0.9655   0.9174
+
+Epoch 3/25
+----------
+train Loss: 0.2155 Acc: 0.9306
+test Loss: 0.1975 Acc: 0.9373
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9455  0.8952         0.879    0.9187         0.9209         0.9257              0.915      0.9852           0.9763   0.9471
+
+Epoch 4/25
+----------
+train Loss: 0.1846 Acc: 0.9385
+test Loss: 0.2098 Acc: 0.9302
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9571  0.8034          0.88     0.896         0.9286         0.9252             0.9252      0.9746           0.9695   0.9521
+
+Epoch 5/25
+----------
+train Loss: 0.1634 Acc: 0.9439
+test Loss: 0.2413 Acc: 0.9202
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9242  0.8431        0.8924    0.8983         0.9231         0.8875             0.9067      0.9809            0.951   0.9178
+
+Epoch 6/25
+----------
+train Loss: 0.1538 Acc: 0.9521
+test Loss: 0.2082 Acc: 0.9316
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9534  0.7963        0.8773     0.922         0.9362         0.9283             0.9178      0.9767           0.9586   0.9415
+
+Epoch 7/25
+----------
+train Loss: 0.1450 Acc: 0.9523
+test Loss: 0.2210 Acc: 0.9266
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9173  0.8713        0.9097    0.9227         0.9091         0.9115             0.9315      0.9788           0.9399   0.9076
+
+Epoch 8/25
+----------
+train Loss: 0.1254 Acc: 0.9576
+test Loss: 0.1859 Acc: 0.9387
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9451   0.898        0.9114    0.9429         0.9078         0.9236             0.9139      0.9873            0.951   0.9253
+
+Epoch 9/25
+----------
+train Loss: 0.1310 Acc: 0.9580
+test Loss: 0.1859 Acc: 0.9416
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9524  0.8713        0.9188    0.9423         0.9091         0.9211             0.9388      0.9852            0.951   0.9391
+
+Epoch 10/25
+----------
+train Loss: 0.1132 Acc: 0.9630
+test Loss: 0.1829 Acc: 0.9402
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9368  0.8462        0.9221    0.9423         0.9091         0.9329             0.9139      0.9831           0.9586   0.9419
+
+Epoch 11/25
+----------
+train Loss: 0.1198 Acc: 0.9607
+test Loss: 0.1652 Acc: 0.9444
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+   0.96  0.8738        0.9193    0.9448         0.9014         0.9356             0.9262      0.9853           0.9547   0.9446
+
+Epoch 12/25
+----------
+train Loss: 0.1191 Acc: 0.9613
+test Loss: 0.1667 Acc: 0.9402
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9416  0.8824        0.9216    0.9448         0.9078         0.9396             0.9189      0.9853           0.9474   0.9226
+
+Epoch 13/25
+----------
+train Loss: 0.1119 Acc: 0.9630
+test Loss: 0.1773 Acc: 0.9387
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9527  0.8866        0.9125     0.932         0.9091         0.9211              0.902      0.9853           0.9514   0.9443
+
+Epoch 14/25
+----------
+train Loss: 0.1107 Acc: 0.9649
+test Loss: 0.1909 Acc: 0.9323
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9446  0.8544        0.9136    0.9242         0.9014         0.9302             0.9007      0.9787            0.951   0.9231
+
+Epoch 15/25
+----------
+train Loss: 0.1139 Acc: 0.9630
+test Loss: 0.1857 Acc: 0.9395
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9451  0.8627        0.9159    0.9429         0.9091         0.9428             0.9189      0.9809            0.951    0.928
+
+Epoch 16/25
+----------
+train Loss: 0.1064 Acc: 0.9654
+test Loss: 0.1781 Acc: 0.9359
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9485  0.8713         0.913    0.9294         0.9014         0.9267             0.9007      0.9852           0.9547   0.9284
+
+Epoch 17/25
+----------
+train Loss: 0.1069 Acc: 0.9663
+test Loss: 0.1864 Acc: 0.9352
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9368  0.8571         0.925     0.932         0.9014         0.9267             0.9139      0.9831            0.951   0.9231
+
+Epoch 18/25
+----------
+train Loss: 0.1036 Acc: 0.9668
+test Loss: 0.1964 Acc: 0.9323
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9407  0.8571        0.9216    0.9242         0.9014         0.9175             0.9067      0.9831            0.951   0.9205
+
+Epoch 19/25
+----------
+train Loss: 0.1169 Acc: 0.9634
+test Loss: 0.1809 Acc: 0.9387
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9565  0.8411        0.9159      0.94         0.9091          0.932             0.9067      0.9787           0.9514   0.9415
+
+Epoch 20/25
+----------
+train Loss: 0.1039 Acc: 0.9670
+test Loss: 0.1767 Acc: 0.9416
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9481  0.8889        0.9226    0.9446         0.9091         0.9365             0.9128      0.9853            0.951   0.9284
+
+Epoch 21/25
+----------
+train Loss: 0.1047 Acc: 0.9654
+test Loss: 0.1821 Acc: 0.9359
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9328  0.8571        0.9154    0.9398         0.9078         0.9365             0.9128      0.9809           0.9583   0.9178
+
+Epoch 22/25
+----------
+train Loss: 0.1001 Acc: 0.9682
+test Loss: 0.1838 Acc: 0.9387
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9368  0.8738        0.9216    0.9448         0.9014         0.9396             0.9128      0.9831           0.9547   0.9205
+
+Epoch 23/25
+----------
+train Loss: 0.1089 Acc: 0.9656
+test Loss: 0.1769 Acc: 0.9387
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9603  0.8571        0.9182    0.9242         0.9078         0.9241             0.9139      0.9852            0.955   0.9415
+
+Epoch 24/25
+----------
+train Loss: 0.1189 Acc: 0.9603
+test Loss: 0.1713 Acc: 0.9416
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9412  0.8738        0.9188    0.9426         0.9091         0.9324               0.92      0.9852           0.9586   0.9388
+
+Epoch 25/25
+----------
+train Loss: 0.1045 Acc: 0.9667
+test Loss: 0.1829 Acc: 0.9380
+
+F1 Score:
+  altar    apse    bell_tower    column    dome(inner)    dome(outer)    flying_buttress    gargoyle    stained_glass    vault
+-------  ------  ------------  --------  -------------  -------------  -----------------  ----------  ---------------  -------
+ 0.9493  0.8411        0.9216    0.9346         0.9091          0.936             0.9067      0.9809           0.9547   0.9333
+
+Training complete in 79m 41s
+Best val Acc: 0.944444
+saving final model state to ./resnet152_final_state.pth.tar
