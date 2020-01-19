@@ -69,9 +69,9 @@ Work Breakdown
 - refactor code to indidual files (1.5h)
 - package README.md (0.5h)
 - prediction of a single image (4.5h)
-- dockerfile and flask (5h)
+- dockerfile and flask (5.5h)
 
-=> Total Time: 40.5h
+=> Total Time: 41h
 
 ## setup
 
@@ -128,9 +128,12 @@ see `transfer/run.sh` for four usages of transfer learning, which have been used
 ## docker
 
 ```bash
+docker build -f docker-pytorch-base/Dockerfile -t adl-pytorch-base ./docker-pytorch-base/
 docker build -t adl-heritage .
-docker run -it --rm -p 8080:8080 adl-heritage /bin/bash
+docker run -it --rm -p 8080:8080 adl-heritage
 ```
+
+goto [http://localhost:8080](http://localhost:8080)
 
 ## next steps
 

@@ -22,7 +22,7 @@ class TransferModel:
         self.model_name = 'resnet152'
         self.device = torch.device("cpu")
         self.folder = folder
-        self.model = torch.load(os.path.join(self.folder + model_file)).to(self.device)
+        self.model = torch.load(os.path.join(self.folder + model_file), map_location=self.device)
         self.model.eval()
 
 
