@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: hrnet predict",
+            "name": "Python: predict",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/transfer/predict.py",
@@ -13,21 +13,8 @@
             "args": [
                 "--cfg=experiments/cls_hrnet_w64_sgd_lr5e-2_wd1e-4_bs32_x100.yaml",
                 "--testModel=./hrnet_final_state_largest_94_epochs10.pth.tar",
-                "--dataDir=../../data",
-                "--modelFamily=hrnet",
-            ],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Python: resnet152 predict",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}/transfer/predict.py",
-            "cwd": "${workspaceFolder}/transfer",
-            "args": [
-                "--cfg=experiments/cls_resnet152.yaml",
-                "--dataDir=../../data",
-                "--modelFamily=resnet152",
+                "--dataDir=some_data",
+                "--modelFamily=some_model",
             ],
             "console": "integratedTerminal"
         },

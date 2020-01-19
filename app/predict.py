@@ -14,15 +14,15 @@ from model_provider import provide_model
 import models
 
 
-class TransferModel:
+class Resnet152Model:
     
 
-    def __init__(self, folder, model_file):
+    def __init__(self, folder):
         self.class_names = ['altar','apse','bell tower','column','dome(inner)','dome(outer)','flying_buttress','gargoyle','stained_glass','vault']
         self.model_name = 'resnet152'
         self.device = torch.device("cpu")
         self.folder = folder
-        self.model = torch.load(os.path.join(self.folder + model_file)).to(self.device)
+        self.model = torch.load(os.path.join(self.folder + 'resnet152_final_model.pt')).to(self.device)
         self.model.eval()
 
 
@@ -75,11 +75,9 @@ class TransferModel:
 def main():
     config = from_args()
 
-    model = TransferModel('./', 'resnet152_final_model.pt')
-    hrnet_model = TransferModel('./', 'hrnet_final_model.pt')
-
+    model = Resnet152Model('./')
+    
     model.predict()
-    hrnet_model.predict()
 
 if __name__ == '__main__':
     main()

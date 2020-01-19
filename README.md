@@ -69,8 +69,9 @@ Work Breakdown
 - refactor code to indidual files (1.5h)
 - package README.md (0.5h)
 - prediction of a single image (4.5h)
+- dockerfile and flask (5h)
 
-=> Total Time: 35.5
+=> Total Time: 40.5h
 
 ## setup
 
@@ -106,9 +107,9 @@ conda install pillow=6.1
 pip install torchtest
 ```
 
-Put the pretrained hrnet models from [hrnet github page](https://github.com/HRNet/HRNet-Image-Classification#imagenet-pretrained-models) into the `transfer/`
+Put the pretrained hrnet models from [hrnet github page](https://github.com/HRNet/HRNet-Image-Classification#imagenet-pretrained-models) into the `transfer/model_states`
 
-The [heritage dataset](https://old.datahub.io/dataset/architectural-heritage-elements-image-dataset) folder can be configured, the `val` folder has to be renamed to `test`.
+The [heritage dataset](https://old.datahub.io/dataset/architectural-heritage-elements-image-dataset) target folder can be configured, but the `val` subfolder has to be renamed to `test`.
 
 ## run code
 
@@ -123,6 +124,13 @@ Additional parameters are defined as extra arguments:
 - transferDataFolder: folder where the [heritage dataset](https://old.datahub.io/dataset/architectural-heritage-elements-image-dataset) resides in
 
 see `transfer/run.sh` for four usages of transfer learning, which have been used for training and testing.
+
+## docker
+
+```bash
+docker build -t adl-heritage .
+docker run -it --rm -p 8080:8080 adl-heritage /bin/bash
+```
 
 ## next steps
 

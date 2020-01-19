@@ -1,0 +1,7 @@
+<h1>Prediction Page</h1>
+<a href="{{ url_for('index') }}">Back</a><p>
+
+{% for file_url in file_urls %}
+    <p>{{ prediction }}</p>
+    <p><img style="height: 150px" src="{{ file_url }}"></p>
+{% endfor %}
