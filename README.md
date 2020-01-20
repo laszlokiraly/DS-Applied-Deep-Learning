@@ -28,7 +28,7 @@ The training images dimensions are 128x128 with 8bit RBG in jpg format. The test
 
 ## Result Table
 
-Four experiments of full transfer learning with 2 different model families have been concluded.
+Four experiments of full transfer learning with 2 different model families have been concluded. The models have been trained in 25 epochs:
 
 **model**|**altar**|**apse**|**bell tower**|**column**|**dome(inner)**|**dome(outer)**|**flying buttress**|**gargoyle**|**stained glass**|**vault**|**performance**
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
@@ -37,13 +37,16 @@ Four experiments of full transfer learning with 2 different model families have 
 **resnet 18**          |**0.942**|0.6602|0.8629|0.8427|0.9078|0.8762|0.766|**0.9536**|**0.9622**|**0.9298**|-2
 **resnet 152**         |**0.96**|0.8738|**0.9193**|0.9448|0.9014|0.9356|**0.9262**|**0.9853**|0.9547|**0.9446**|+/-0
 **hrnet v2 largest**   |**0.9373**|**0.9091**|**0.944**|0.9458|0.9489|0.936|**0.9396**|**0.9787**|0.966|**0.9364**|+2
-**resnet 152 II**      |**0.9438**|**0.8958**|**0.908**|0.9343|0.913|0.9158|**0.9524**|**0.9874**|0.9831|**0.9474**|+2
-**hrnet v2 largest II**|**0.9412**|**0.8842**|**0.9373**|0.9474|0.942|**0.9488**|**0.9272**|**0.9809**|0.9655|**0.9275**|**+4**
 
 `hrnet v2 largest` beats the `baseline` model in six of ten classes and the f1 score is remarkable well balanced over all classes. The baseline f1 scores interval length of `max - min` is 0.185, whereas `hrnet v2 largest` max/min distance of the classes is 0.0696.  
-Remark: The procedure of saving of the transfered high resolution net models has changed, so the models `resnet 152 II` and `hrnet v2 largest II` were trained with same parameters and added to the table. `hrnet v2 largest II` beats `baseline` in 7 out of 10 F1 scores.
+After problems with saving/loading the transferred models, resnet and hrnet have been retrained with the same parameters, but only in 15 epochs:
 
-The models have been trained in 25 epochs, the `II` models have been trained in 15 epochs.
+**model**|**altar**|**apse**|**bell tower**|**column**|**dome(inner)**|**dome(outer)**|**flying buttress**|**gargoyle**|**stained glass**|**vault**|**performance**
+:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
+**resnet 152**      |**0.9438**|**0.8958**|**0.908**|0.9343|0.913|0.9158|**0.9524**|**0.9874**|0.9831|**0.9474**|+2
+**hrnet v2 largest**|**0.9412**|**0.8842**|**0.9373**|0.9474|0.942|**0.9488**|**0.9272**|**0.9809**|0.9655|**0.9275**|**+4**
+
+Nice!
 
 ## Setup
 
