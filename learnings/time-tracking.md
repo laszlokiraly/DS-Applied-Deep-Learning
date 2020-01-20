@@ -13,7 +13,6 @@ Work Breakdown
 - final report (4h)
 - presentation slides (4h)
 
-
 ## Real Times
 
 Work Breakdown
@@ -25,3 +24,5 @@ Work Breakdown
 - include hrnet model into transfer learning for heritage dataset with F1-Score (8h)
 - run experiments on all models and evaluate/document results (2h)
 - refactor code to own files (2h)
+- prediction of a single image (4.5h)
+- dockerfile and flask (5.5h)
