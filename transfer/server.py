@@ -117,4 +117,4 @@ def predict():
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
     app.config['SESSION_TYPE'] = 'memcached'
-    app.run(host="0.0.0.0", debug=True, port=PORT)
+    app.run(host="0.0.0.0", debug=False, port=PORT)
