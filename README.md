@@ -215,3 +215,7 @@ The transferred models were trained by updating all the weights of the pretraine
 ### Improve Web App Upload
 
 The webapp sometimes blocks image uploads. It should allow any image to be uploaded.
+
+### Train with different Train/Validation Split
+
+Paper had a split of 80/20%. Different Splits could be tried out.
