@@ -145,8 +145,9 @@ goto [http://localhost:8080](http://localhost:8080)
 - prediction of a single image (4.5h)
 - dockerfile and flask (5.5h)
 - final report (2.5h)
+- slides (1.5h)
 
-=> Total Time: 43.5h
+=> Total Time: 45h
 
 ## Learnings
 
