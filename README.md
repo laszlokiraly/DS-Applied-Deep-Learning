@@ -1,6 +1,6 @@
 # Applied Deep Learning: Report of Improving on Classification of Architectural Heritage Images Using Deep Learning Techniques
 
-Author: **"Laszlo Kiraly, 09227679"**  
+Author: **"Laszlo Kiraly"**  
 Date: **"20/01/2020"**
 
 ---
