@@ -19,7 +19,7 @@ matplotlib==3.0.3
 # mkl-fft==1.0.15
 # mkl-random==1.1.0
 # mkl-service==2.3.0
-numpy==1.18.1
+numpy==1.22.0
 olefile==0.46
 Pillow==6.2.0
 pycparser==2.19
